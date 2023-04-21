@@ -19,7 +19,7 @@ npm install
 
 ## Configuration
 
-To configure each environment, go to the cypress/config directory. Inside this folder, you'll find the configuration options, including examples that you can modify, environment variables, and other settings for each environment.
+To configure each environment, go to the `cypress/config` directory. Inside this folder, you'll find the configuration options, including examples that you can modify, environment variables, and other settings for each environment.
 
 
 ## Running Tests
