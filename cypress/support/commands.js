@@ -1,6 +1,6 @@
 // Import API & UI commands
 import * as apiCmd from './api.cmd.js';
-import * as uiCmd from './api.cmd.js';
+import * as uiCmd from './ui.cmd.js';
 
 // Authentication
 

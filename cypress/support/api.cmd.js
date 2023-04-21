@@ -1,5 +1,7 @@
 // Grab the environment variables
 const env = Cypress.env();
+// Import utils function for controlled-unique data generation
+import { generateUniqueData } from '/cypress/support/utils';
 
 
 // Admin Login - Returns the auth token
