@@ -1,0 +1,9 @@
+{
+  "baseUrl": "",
+  "baseUrlAPI": "",
+  "adminUser": "<admin-email-goes-here>",
+  "adminPassword": "<admin-password-goes-here>",
+  "env": {
+    "environment": "staging"
+  }
+}

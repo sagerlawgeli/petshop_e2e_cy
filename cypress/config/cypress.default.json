@@ -1,0 +1,9 @@
+{
+  "baseUrl": "https://pet-shop.buckhill.com.hr/",
+  "baseUrlAPI": "https://pet-shop.buckhill.com.hr/api/v1/",
+  "adminUser": "<admin-email-goes-here>",
+  "adminPassword": "<admin-password-goes-here>",
+  "env": {
+    "environment": "default"
+  }
+}
