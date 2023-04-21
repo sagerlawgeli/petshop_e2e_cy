@@ -50,3 +50,9 @@ Cypress.Commands.add('filterControls', (action) => {
 
     return uiCmd.filterControls(action);
 });
+
+Cypress.Commands.add('filterTable', (filterValues) => {
+    Cypress.log({ name: 'filterTable' });
+
+    return uiCmd.filterTable(filterValues);
+});

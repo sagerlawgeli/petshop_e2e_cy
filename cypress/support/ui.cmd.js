@@ -88,9 +88,35 @@ function filterControls(action) {
     }
 };
 
+// Filters records on both the products and customers table - expects a an object of values to filter
+function filterTable(filterValues) {
+    // Open filter controls
+    cy.filterControls()
+
+    // Check that the reset filter button is disabled
+    cy.getByTestId('table-filter-reset').should('be.visible').should('have.attr', 'disabled');
+
+    // Loop through each filter and apply it to the table
+    Object.entries(filterValues).forEach(([filterType, filterValue]) => {
+        // Get the filter input element and type in the filter value
+        cy.getByTestId(`table-filter-text-${filterType}`).find('input').type(`${filterValue}{enter}`);
+
+        // Hide filter controls to see results
+        cy.filterControls()
+
+        // Get the filtered data rows and assert that they match the filter value
+        cy.get('tbody').find('tr:not(:last-child)').each((row) => {
+            cy.get(row).should('include.text', filterValue)
+        });
+
+        cy.filterControls('reset');
+    });
+};
+
 module.exports = {
     adminLoginUI,
     getInput,
     createNewEntity,
-    filterControls
+    filterControls,
+    filterTable
 };
