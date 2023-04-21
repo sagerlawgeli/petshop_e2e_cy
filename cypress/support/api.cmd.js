@@ -126,11 +126,45 @@ function createOrder(productUUID, orderStatusUUID, paymentUUID, token) {
     });
 };
 
+function createSales() {
+    let productUUID;
+    let orderStatusUUID;
+    let paymentUUID;
+    let token;
+
+    // cy.adminLoginAPI()
+    // cy.getCookie('auth').then((cookie) => {
+    //     token = cookie.value;
+    // });
+
+    cy.userCreateAPI().then((response) => {
+        token = response.token;
+        cy.log(response.token);
+    });
+
+
+    cy.getProductUUID().then((uuid) => {
+        productUUID = uuid;
+        return cy.getOrderStatusUUID();
+    }).then((uuid) => {
+        orderStatusUUID = uuid;
+        return cy.createPayment(token);
+    }).then((uuid) => {
+        paymentUUID = uuid;
+        return cy.createOrder({ productUUID, orderStatusUUID, paymentUUID, token });
+    }).then((response) => {
+        // Handle response here
+        // cy.log(response.body.data.uuid);
+        return response.body.data.uuid;
+    });
+};
+
 module.exports = {
     adminLoginAPI,
     userCreateAPI,
     getProductUUID,
     getOrderStatusUUID,
     createPayment,
-    createOrder
+    createOrder,
+    createSales
 };
