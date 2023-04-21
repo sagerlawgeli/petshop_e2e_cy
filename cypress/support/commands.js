@@ -65,7 +65,7 @@ Cypress.Commands.add('filterTable', (filterValues) => {
     return uiCmd.filterTable(filterValues);
 });
 
-// Orders / Sales
+// Orders / Sales - the following commands are used to generate an order
 Cypress.Commands.add('getProductUUID', () => {
     Cypress.log({ name: 'getProductUUID' });
 
@@ -76,4 +76,10 @@ Cypress.Commands.add('getOrderStatusUUID', () => {
     Cypress.log({ name: 'getOrderStatusUUIDs' });
 
     return apiCmd.getOrderStatusUUID();
+});
+
+Cypress.Commands.add('createPayment', (token) => {
+    Cypress.log({ name: 'createPayment' });
+
+    return apiCmd.createPayment(token);
 });

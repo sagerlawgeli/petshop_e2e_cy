@@ -77,9 +77,32 @@ function getOrderStatusUUID() {
     });
 };
 
+function createPayment(token) {
+    return cy.request({
+        method: 'POST',
+        url: env.baseUrlAPI + 'payment/create',
+        auth: {
+            'bearer': token
+        },
+        body: {
+            "type": "cash_on_delivery",
+            "details": {
+                "text": "Cash on delivery",
+                "firstName": "Brooke",
+                "lastName": "O'Keefe",
+                "addressLine1": "9710 Sherwood Prairie",
+                "consent": true
+            }
+        }
+    }).then((paymentResponse) => {
+        return paymentResponse.body.data.uuid;
+    });
+};
+
 module.exports = {
     adminLoginAPI,
     userCreateAPI,
     getProductUUID,
-    getOrderStatusUUID
+    getOrderStatusUUID,
+    createPayment
 };
