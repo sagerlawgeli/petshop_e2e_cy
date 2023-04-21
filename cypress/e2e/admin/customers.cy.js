@@ -38,5 +38,22 @@ describe('Customers Page', { testIsolation: false }, () => {
                 cy.contains(email);
             });
         });
+
+        it('Should update an existing customer', () => {
+            cy.intercept('PUT', env.baseUrlAPI + 'admin/user-edit/*').as('updateRequest')
+
+            // select the delete button for the first row and click it
+            cy.get('.customers__action-btn').first().click();
+            cy.get('.customers__action-btn').find('.mdi-pencil').click();
+
+            // Edit a field
+            cy.fillField('.customer-card', 'password', 'petshop2023')
+            cy.fillField('.customer-card', 'confirm password', 'petshop2023')
+            cy.get(`.customer-card button`).click({ force: true });
+
+            cy.wait('@updateRequest').its('response.statusCode').should('eq', 200)
+            // Close create modal
+            cy.get('.mdi-close').should('be.visible').click();
+        });
     });
 });
