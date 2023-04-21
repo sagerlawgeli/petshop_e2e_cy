@@ -34,6 +34,23 @@ describe('Admin: Running tests on the Products page', { testIsolation: false }, 
     });
 
     describe('Create, update & delete prodcuts', () => {
+
+        it('Should update an existing product', () => {
+            cy.intercept('PUT', env.baseUrlAPI + 'product/*').as('updateRequest')
+
+            // select the delete button for the first row and click it
+            cy.get('.products__action-btn').first().click();
+            cy.get('.products__action-btn').find('.mdi-pencil').click();
+
+            cy.getInput('.product-card', 'Description').clear({ force: true }).type('some text');
+
+            cy.get('button.bg-primary:nth-child(1)').click({ force: true });
+
+            cy.wait('@updateRequest').its('response.statusCode').should('eq', 200)
+            // Close create modal
+            cy.get('.mdi-close').should('be.visible').click();
+        });
+        
         it('Should delete a product', () => {
             // Let get the product details
             cy.get('table tr:visible').its('length').then((initialRowCount) => {
