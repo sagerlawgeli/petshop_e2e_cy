@@ -15,6 +15,15 @@ function adminLoginUI() {
     cy.contains("Monthly sales")
 };
 
+function getInput(modal, labelText) {
+    cy.contains(`${modal} .v-field__field label`, labelText, { matchCase: false })
+        .then(($label) => {
+            const inputId = $label.attr('for');
+            cy.get(`#${inputId}`).should('exist');
+        });
+};
+
 module.exports = {
     adminLoginUI,
+    getInput
 };
