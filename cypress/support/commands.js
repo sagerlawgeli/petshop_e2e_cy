@@ -69,5 +69,11 @@ Cypress.Commands.add('filterTable', (filterValues) => {
 Cypress.Commands.add('getProductUUID', () => {
     Cypress.log({ name: 'getProductUUID' });
 
-    return adminCmd.getProductUUID();
+    return apiCmd.getProductUUID();
+});
+
+Cypress.Commands.add('getOrderStatusUUID', () => {
+    Cypress.log({ name: 'getOrderStatusUUIDs' });
+
+    return apiCmd.getOrderStatusUUID();
 });

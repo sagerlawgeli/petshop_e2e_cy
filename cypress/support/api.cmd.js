@@ -61,7 +61,25 @@ function getProductUUID() {
     });
 };
 
+function getOrderStatusUUID() {
+    return cy.request({
+        method: 'GET',
+        url: env.baseUrlAPI + 'order-statuses',
+    }).then((statusResponse) => {
+        const data = statusResponse.body.data;
+        let orderStatusUUID = '';
+        data.forEach((status) => {
+            if (status.title == 'pending payment') {
+                orderStatusUUID = status.uuid;
+            }
+        });
+        return orderStatusUUID;
+    });
+};
+
 module.exports = {
     adminLoginAPI,
-    userCreateAPI
+    userCreateAPI,
+    getProductUUID,
+    getOrderStatusUUID
 };
