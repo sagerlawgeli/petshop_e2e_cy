@@ -29,6 +29,15 @@ Cypress.Commands.add('getByTestId', (testId) => {
     return cy.get(`[data-testid="${testId}"]`);
 });
 
+// Fillers
+Cypress.Commands.add('fillField', (parent, field, value) => { // Finds a field based on text of its label 
+    cy.get(parent)
+        .find('label')
+        .contains(field, { matchCase: false })
+        .next('input')
+        .clear()
+        .type(value)
+});
 
 // Creates a new entity
 Cypress.Commands.add('createNewEntity', (entityType, entityData) => {
