@@ -1,7 +1,7 @@
 /// <reference types='Cypress' />
 const env = Cypress.env();
 
-describe('dmin: Running tests on the dsahboard (orders) page', { testIsolation: false }, () => {
+describe('Admin: Running tests on the dsahboard (orders) page', { testIsolation: false }, () => {
     before(() => {
         // Clear saved sessions and login as admin
         Cypress.session.clearAllSavedSessions()
