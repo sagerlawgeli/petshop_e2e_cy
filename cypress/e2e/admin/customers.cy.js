@@ -55,5 +55,23 @@ describe('Customers Page', { testIsolation: false }, () => {
             // Close create modal
             cy.get('.mdi-close').should('be.visible').click();
         });
+
+        it('Should delete a customer', () => {
+            cy.intercept('DELETE', env.baseUrlAPI + 'admin/user-delete/*').as('deleteRequest')
+
+            cy.get('table tr:visible').its('length').then((initialRowCount) => {+
+                // do something with the initial row count, such as log it to the console
+                console.log(`Initial row count: ${initialRowCount}`);
+
+                // select the delete button for the first row and click it
+                cy.get('.customers__action-btn').first().click();
+                cy.get('.customers__action-btn').find('.mdi-delete').click();
+                cy.get('.v-card').should('be.visible').find('span').contains('delete', { matchCase: false }).click();
+
+                cy.wait('@deleteRequest').its('response.statusCode').should('eq', 200)
+                // select all visible tr elements again and assert that there is one fewer than before
+                cy.get('table tr:visible').its('length').should('eq', initialRowCount - 1);
+            });
+        });
     });
 });
