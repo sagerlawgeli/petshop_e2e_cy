@@ -17,17 +17,19 @@ Then, install the necessary dependencies using `npm`:
 npm install
 ```
 
+## Configuration
+
+To configure each environment, go to the cypress/config directory. Inside this folder, you'll find the configuration options, including examples that you can modify, environment variables, and other settings for each environment.
+
+
 ## Running Tests
 
-To run the tests, use the following command:
+To run the tests, you'll need to specify the enviorment and use the following commands:
 
 * Admin Dashboard (E2E)
 
 ```
-npm run cy:e2e-admin
+npm run cy:e2e-admin name=<enviorment>
 ```
 
-## Configuring Tests
-
-The configuration options for the tests are located inside `cypress/config` directory. You can modify the enviorment variables and other settings for each enviroment inside this folder.
-
+Remember, you'll first need to setup enviorment variables such as admin credntials inside `cypress/config` 
