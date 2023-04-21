@@ -1,0 +1,22 @@
+{
+  "name": "petshop_e2e_cypress",
+  "version": "1.0.0",
+  "description": "E2E Tests for Petshop e-commerce website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sagerlawgeli/petshop_e2e_cy.git"
+  },
+  "author": "Sager Hemi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sagerlawgeli/petshop_e2e_cy/issues"
+  },
+  "homepage": "https://github.com/sagerlawgeli/petshop_e2e_cy#readme",
+  "devDependencies": {
+    "cypress": "^12.10.0"
+  }
+}
