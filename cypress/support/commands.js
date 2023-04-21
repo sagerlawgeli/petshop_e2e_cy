@@ -83,3 +83,9 @@ Cypress.Commands.add('createPayment', (token) => {
 
     return apiCmd.createPayment(token);
 });
+
+Cypress.Commands.add('createOrder', ({ productUUID, orderStatusUUID, paymentUUID, token }) => {
+    Cypress.log({ name: 'createOrder' });
+
+    return apiCmd.createOrder(productUUID, orderStatusUUID, paymentUUID, token);
+});

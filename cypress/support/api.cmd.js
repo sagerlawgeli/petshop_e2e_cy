@@ -99,10 +99,38 @@ function createPayment(token) {
     });
 };
 
+function createOrder(productUUID, orderStatusUUID, paymentUUID, token) {
+    const products = {
+        uuid: productUUID,
+        quantity: 1
+    };
+
+    const address = {
+        billing: 'string',
+        shipping: 'string'
+    };
+
+    return cy.request({
+        method: 'POST',
+        url: env.baseUrlAPI + 'order/create',
+        headers: {
+            'Authorization': token,
+        },
+        form: true,
+        body: {
+            products: JSON.stringify(products),
+            order_status_uuid: orderStatusUUID,
+            payment_uuid: paymentUUID,
+            address: JSON.stringify(address),
+        }
+    });
+};
+
 module.exports = {
     adminLoginAPI,
     userCreateAPI,
     getProductUUID,
     getOrderStatusUUID,
-    createPayment
+    createPayment,
+    createOrder
 };
