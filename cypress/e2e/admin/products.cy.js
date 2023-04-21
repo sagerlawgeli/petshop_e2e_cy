@@ -35,6 +35,19 @@ describe('Admin: Running tests on the Products page', { testIsolation: false }, 
 
     describe('Create, update & delete prodcuts', () => {
 
+        it('Should create a new product', () => { // PLEASE NOTE: This is not working at the moment. please see bug #0002 for more details
+            cy.get('button > span').contains('new product').should('be.visible').click();
+            // Load product data from a fixture
+            cy.fixture('product.json').then(data => {
+
+                // 'createNewEntity' command expects 2 properties (entityType, EntityData)
+                cy.createNewEntity('product', data);
+
+                // Assert that the newly created product is listed on the page
+                // PLEASE NOTE: This is not working at the moment. please see bug #0002 for more details
+            });
+        });
+
         it('Should update an existing product', () => {
             cy.intercept('PUT', env.baseUrlAPI + 'product/*').as('updateRequest')
 
@@ -50,7 +63,7 @@ describe('Admin: Running tests on the Products page', { testIsolation: false }, 
             // Close create modal
             cy.get('.mdi-close').should('be.visible').click();
         });
-        
+
         it('Should delete a product', () => {
             // Let get the product details
             cy.get('table tr:visible').its('length').then((initialRowCount) => {
