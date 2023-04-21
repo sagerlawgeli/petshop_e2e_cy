@@ -31,3 +31,9 @@ Cypress.Commands.add('createNewEntity', (entityType, entityData) => {
 
     return uiCmd.createNewEntity({ entityType, entityData });
 });
+
+Cypress.Commands.add('userCreateAPI', () => {
+    Cypress.log({ name: 'userCreateAPI' });
+
+    return apiCmd.userCreateAPI();
+});
