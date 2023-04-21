@@ -4,7 +4,7 @@
   "description": "E2E Tests for Petshop e-commerce website",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cy:admin-e2e": "npx cypress run --spec cypress/e2e/admin/dashboard.cy.js,cypress/e2e/admin/customers.cy.js,cypress/e2e/admin/products.cy.js --env"
   },
   "repository": {
     "type": "git",
