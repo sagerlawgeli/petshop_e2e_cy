@@ -15,3 +15,9 @@ Cypress.Commands.add('adminLoginUI', () => {
 
     return uiCmd.adminLoginUI();
 });
+
+Cypress.Commands.add('getInput', (modal, labelText) => {
+    Cypress.log({ name: 'getInput' });
+
+    return uiCmd.getInput(modal, labelText);
+});
