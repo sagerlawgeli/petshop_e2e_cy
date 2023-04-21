@@ -51,6 +51,16 @@ function userCreateAPI() {
     });
 };
 
+// Sales
+function getProductUUID() {
+    return cy.request({
+        method: 'GET',
+        url: env.baseUrlAPI + 'products',
+    }).then((productsResponse) => {
+        return productsResponse.body.data[0].uuid;
+    });
+};
+
 module.exports = {
     adminLoginAPI,
     userCreateAPI

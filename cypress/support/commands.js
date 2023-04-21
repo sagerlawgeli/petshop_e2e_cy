@@ -3,7 +3,6 @@ import * as apiCmd from './api.cmd.js';
 import * as uiCmd from './ui.cmd.js';
 
 // Authentication
-
 Cypress.Commands.add('adminLoginAPI', () => {
     Cypress.log({ name: 'adminLoginAPI' });
 
@@ -64,4 +63,11 @@ Cypress.Commands.add('filterTable', (filterValues) => {
     Cypress.log({ name: 'filterTable' });
 
     return uiCmd.filterTable(filterValues);
+});
+
+// Orders / Sales
+Cypress.Commands.add('getProductUUID', () => {
+    Cypress.log({ name: 'getProductUUID' });
+
+    return adminCmd.getProductUUID();
 });
