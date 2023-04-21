@@ -77,8 +77,20 @@ function createNewEntity({ entityType, entityData }) {
 
 };
 
+// Toggles filter controls on tables showing records - takes 'reset' as an argument to clear filters
+function filterControls(action) {
+    // Click filters controls button to show/hide the filters controls
+    cy.getByTestId('filters-control').find('i').should('be.visible').click();
+    if (action == "reset") {
+        // Reset results & hide controls
+        cy.getByTestId('table-filter-reset').should('be.visible').click();
+        cy.getByTestId('filters-control').find('i').should('be.visible').click();
+    }
+};
+
 module.exports = {
     adminLoginUI,
     getInput,
-    createNewEntity
+    createNewEntity,
+    filterControls
 };

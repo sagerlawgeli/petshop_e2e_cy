@@ -24,6 +24,11 @@ Cypress.Commands.add('getInput', (modal, labelText) => {
     return uiCmd.getInput(modal, labelText);
 });
 
+// Locate elements via test id
+Cypress.Commands.add('getByTestId', (testId) => {
+    return cy.get(`[data-testid="${testId}"]`);
+});
+
 
 // Creates a new entity
 Cypress.Commands.add('createNewEntity', (entityType, entityData) => {
@@ -36,4 +41,12 @@ Cypress.Commands.add('userCreateAPI', () => {
     Cypress.log({ name: 'userCreateAPI' });
 
     return apiCmd.userCreateAPI();
+});
+
+
+// Filters
+Cypress.Commands.add('filterControls', (action) => {
+    Cypress.log({ name: 'filterControls' });
+
+    return uiCmd.filterControls(action);
 });
