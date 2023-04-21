@@ -5,7 +5,7 @@
 const env = Cypress.env();
 import { generateUniqueData } from '/cypress/support/utils';
 
-describe('Customers Page', { testIsolation: false }, () => {
+describe('Admin: Running tests on the Customers page', { testIsolation: false }, () => {
     before(() => {
         // Clear saved sessions and login as admin
         Cypress.session.clearAllSavedSessions()
