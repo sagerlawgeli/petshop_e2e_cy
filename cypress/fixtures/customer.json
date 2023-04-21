@@ -1,0 +1,11 @@
+{
+    "customer1": {
+        "first name": "Clinton",
+        "last name": "Kilback",
+        "email": "champ.destany1@example.net",
+        "phone": "504-371-6161",
+        "location": "6641 Howell Cove Apt. 837\nRaleighborough, SD 63779",
+        "password": "petshop2023",
+        "confirm password": "petshop2023"
+    }
+}
