@@ -16,6 +16,27 @@ describe('Customers Page', { testIsolation: false }, () => {
         cy.get('.breadcrumb__title').contains('dashboard-customers').should('be.visible');
     });
 
+    describe('View and filter through customers data', () => {
+        it('Should be able to render customers records', () => {
+            cy.get('table').should('be.visible');
+            cy.get('tbody > tr').should('be.visible');
+        });
+
+        it('Should filter customers by email', () => {
+            // Create a new user/cutsomer to test filters on
+            cy.userCreateAPI();
+            
+            // Define the filter values
+            const filterValues = {
+                email: '@petshop.com'
+            };
+
+            // Call the 'filterTable' command with the filter values object
+            // This will apply the email filter to the customer table
+            cy.filterTable(filterValues);
+        });
+    });
+
 
     describe('Create, update & delete custoemrs', () => {
         it('Should create a new customer', () => {
