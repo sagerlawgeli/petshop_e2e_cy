@@ -32,4 +32,21 @@ describe('Admin: Running tests on the Products page', { testIsolation: false }, 
             cy.filterTable(filterValues);
         });
     });
+
+    describe('Create, update & delete prodcuts', () => {
+        it('Should delete a product', () => {
+            // Let get the product details
+            cy.get('table tr:visible').its('length').then((initialRowCount) => {
+                // do something with the initial row count, such as log it to the console
+                console.log(`Initial row count: ${initialRowCount}`);
+
+                // select the delete button for the first row and click it
+                cy.get('.products__action-btn').first().click();
+                cy.get('.products__action-btn').find('.mdi-delete').click();
+                cy.get('.v-card').should('be.visible').find('span').contains('delete', { matchCase: false }).click();
+
+                cy.get('table tr:visible').its('length').should('eq', initialRowCount - 1);
+            });
+        });
+    });
 });
