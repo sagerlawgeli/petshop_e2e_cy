@@ -29,7 +29,7 @@ To run the tests, you'll need to specify the enviorment and use the following co
 * Admin Dashboard (E2E)
 
 ```
-npm run cy:e2e-admin name=<enviorment>
+npm run cy:admin-e2e name=<enviorment>
 ```
 
 Remember, you'll first need to setup enviorment variables such as admin credntials inside `cypress/config` 
